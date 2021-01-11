@@ -74,9 +74,9 @@ resource "aws_autoscaling_group" "asg" {
       propagate_at_launch = true
     }
   }
-  instance_refresh {
-    strategy = "Rolling"
-    triggers = ["launch_configuration"]
+
+  lifecycle {
+    ignore_changes = [target_group_arns]
   }
 
 }
